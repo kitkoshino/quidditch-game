@@ -4,6 +4,7 @@ class Game {
     this.context = $canvas.getContext('2d');
     this.character = new Character(this, selectedCharacter);
     this.background = new Background(this);
+    this.goldenSnitch = new GoldenSnitch(this);
     this.setKeyMovements();
   }
 
@@ -18,6 +19,7 @@ class Game {
 
   draw() {
     this.background.draw();
+    this.goldenSnitch.draw();
     this.character.draw();
   }
 
@@ -25,7 +27,7 @@ class Game {
     window.addEventListener('keydown', (event) => {
       switch (event.keyCode) {
         case 39:
-          if (this.character.col < 14) {
+          if (this.character.col < this.$canvas.width - this.character.imageWidth) {
             event.preventDefault();
             this.character.moveRight();
             this.clear();
@@ -49,7 +51,7 @@ class Game {
           }
           break;
         case 40:
-          if (this.character.row < 14) {
+          if (this.character.row < this.$canvas.height - this.character.imageHeight) {
             event.preventDefault();
             this.character.moveDown();
             this.clear();

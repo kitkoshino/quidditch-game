@@ -5,12 +5,14 @@ class Game {
     this.character = new Character(this, selectedCharacter);
     this.background = new Background(this);
     this.goldenSnitch = new GoldenSnitch(this);
+    this.isRunning = true;
     this.setKeyMovements();
   }
 
   start() {
     console.log('jogo startado');
     this.draw();
+    this.gameLoop();
   }
 
   clear() {
@@ -27,38 +29,56 @@ class Game {
     window.addEventListener('keydown', (event) => {
       switch (event.keyCode) {
         case 39:
-          if (this.character.col < this.$canvas.width - this.character.imageWidth) {
+          if (
+            this.character.col <
+            this.$canvas.width - this.character.imageWidth
+          ) {
             event.preventDefault();
             this.character.moveRight();
-            this.clear();
-            this.draw();
           }
           break;
         case 37:
           if (this.character.col > 0) {
             event.preventDefault();
             this.character.moveLeft();
-            this.clear();
-            this.draw();
           }
           break;
         case 38:
           if (this.character.row > 0) {
             event.preventDefault();
             this.character.moveUp();
-            this.clear();
-            this.draw();
           }
           break;
         case 40:
-          if (this.character.row < this.$canvas.height - this.character.imageHeight) {
+          if (
+            this.character.row <
+            this.$canvas.height - this.character.imageHeight
+          ) {
             event.preventDefault();
             this.character.moveDown();
-            this.clear();
-            this.draw();
           }
           break;
       }
     });
+  }
+
+  checkAllColision() {
+    if(this.goldenSnitch.checkColision()) {
+      this.goldenSnitch.randomPosition();
+      this.goldenSnitch.randomFuturePosition();
+    }
+  }
+
+  gameLoop() {
+    this.checkAllColision();
+    this.goldenSnitch.move();
+    this.clear();
+    this.draw();
+
+    if (this.isRunning) {
+      setTimeout(() => {
+        this.gameLoop();
+      }, 1000 / 60);
+    }
   }
 }

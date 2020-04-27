@@ -8,6 +8,7 @@ class Character {
     };
     this.col = 10; // posicao x
     this.row = 10; // posicao y
+    this.speed = 30;
     this.imageWidth = 90;
     this.imageHeight = 60;
     console.log(selectedCharacter);
@@ -25,18 +26,19 @@ class Character {
   }
 
   moveRight() {
-    this.col += 20;
+    this.col += this.speed;
   }
 
   moveLeft() {
-    this.col -= 20;
+    this.col -= this.speed;
   }
 
   moveUp() {
-    this.row -= 20;
+    this.row -= this.speed;
   }
 
   moveDown() {
-    this.row += 20;
+    this.row += this.speed;
   }
+
 }

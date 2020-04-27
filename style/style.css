@@ -50,9 +50,6 @@ img {
   cursor: pointer;
 }
 
-.harry-image:hover {
-  background-image: url('/images/draco.png');
-}
 
 .hide-div {
   display: none;

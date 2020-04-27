@@ -3,21 +3,47 @@ class GoldenSnitch {
     this.game = game;
     this.image = new Image();
     this.image.src = '/images/snitch.png';
+    this.image1 = new Image();
+    this.image1.src = '/images/snitch2.png';
+    this.image3 = new Image();
+    this.image3.src = '/images/snitch3.png';
     this.snitchWidth = 90;
     this.snitchHeight = 40;
     this.speed = 2;
+    this.contador = 0;
     this.randomPosition();
     this.randomFuturePosition(); //ao executar, cria o targetCol e targetRow
+    this.direction = 'up';
   }
 
   draw() {
-    this.game.context.drawImage(
-      this.image,
-      this.col,
-      this.row,
-      this.snitchWidth,
-      this.snitchHeight
-    );
+    if (this.contador % 10 === 0) {
+      if(this.direction === 'up') {
+        this.direction = 'down'
+      } else {
+        this.direction = 'up';
+      }
+     
+    }
+
+    if(this.direction === 'up') {
+      this.game.context.drawImage(
+        this.image,
+        this.col,
+        this.row,
+        this.snitchWidth,
+        this.snitchHeight
+      );
+    } else {
+      this.game.context.drawImage(
+        this.image1,
+        this.col,
+        this.row,
+        this.snitchWidth,
+        this.snitchHeight
+      );
+    }
+
     //console.log('draw',this.col, this.row);
   }
 
@@ -73,6 +99,7 @@ class GoldenSnitch {
   }
 
   move() {
+    this.contador++;
     if (this.row === this.targetRow && this.col === this.targetCol) {
       this.randomFuturePosition();
     }

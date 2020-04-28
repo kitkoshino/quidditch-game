@@ -1,11 +1,12 @@
-body {
+body,
+h3 {
   padding: 0;
   margin: 0;
   font-family: 'Roboto Slab', serif;
 }
 
 .principal {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-image: url('/images/background.jpg');
   background-size: cover;
@@ -18,14 +19,14 @@ body {
 
 .game-area {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  margin: 0;
 }
 
 .game-intro {
   display: flex;
   flex-direction: column;
   width: 700px;
-  
 }
 
 .images-players-intro {
@@ -44,6 +45,7 @@ body button {
   font-size: 2em;
   font-family: 'Roboto Slab', serif;
   cursor: pointer;
+  outline: none;
 }
 
 body button:hover {
@@ -56,11 +58,86 @@ img {
   cursor: pointer;
 }
 
+.score-board {
+  width: 300px;
+  height: 200px;
+  /*margin-right: -300px;*/
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: brown;
+}
+
+.score-board h3 {
+  font-size: 3em;
+  color: white;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
+  margin: 0;
+  align-items: center;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btns > button {
+  font-size: 1em;
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 0;
 }
 
 .hide-div {
-  display: none;
+  display: none !important; 
+}
+
+.game-over {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.game-over img {
+  width: 60%;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.game-over h1 {
+  font-size: 5em;
+  margin: 5px;
+  color: white;
+}
+
+.game-over h3 {
+  font-size: 2em;
+  font-weight: 400;
+  margin: 20px 0 5px 0;
+  color: white;
+}
+.game-over h4 {
+  font-size: 0.5em;
+  font-weight: 100;
+  margin: 0;
+  color: white;
+}
+
+.game-over button {
+  margin-left: 0;
 }

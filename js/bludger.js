@@ -2,18 +2,21 @@ class Bludger {
   constructor(game) {
     this.game = game;
     this.randomSpeed();
-    this.radius = 20;
+    this.radius = 40;
     this.color = 'brown';
+    this.image = new Image();
+    this.image.src = '/images/bludger.png';
     this.randomPosition(); //cria posicao col e row a partir do metodo randomPosition
   }
 
   draw() {
-    this.game.context.beginPath();
+    this.game.context.drawImage(this.image,this.col,this.row, this.radius, this.radius);
+   /*  this.game.context.beginPath();
     this.game.context.arc(this.col, this.row, this.radius, 0, 2 * Math.PI);
     this.game.context.closePath();
 
     this.game.context.fillStyle = this.color;
-    this.game.context.fill();
+    this.game.context.fill(); */
   }
 
   move() {

@@ -7,14 +7,23 @@ class Game {
     this.goldenSnitch = new GoldenSnitch(this);
     this.bludgers = [];
     this.isRunning = true;
+    this.score = 0;
+    this.bestScore = 0;
     this.setKeyMovements();
   }
 
   start() {
     console.log('jogo startado');
-    this.draw();
     this.createBludger();
     this.gameLoop();
+  }
+
+  reset() {
+    this.character = new Character(this, this.selectedCharacter);
+    this.background = new Background(this);
+    this.goldenSnitch = new GoldenSnitch(this);
+    this.bludgers = [];
+    this.start();
   }
 
   clear() {
@@ -42,6 +51,18 @@ class Game {
   createBludger() {
     const newbludger = new Bludger(this);
     this.bludgers.push(newbludger);
+  }
+
+  gameOver() {
+    this.isRunning = false;
+    if (this.score > this.bestScore) {
+      this.bestScore = this.score;
+    }
+    document.getElementById('score').innerText = `Score: ${this.score}`;
+    document.getElementById('best-score').innerText = `Best Score: ${this.bestScore}`;
+    document.getElementById('game-over').classList.remove('hide-div');
+
+    console.log('game over');
   }
 
   setKeyMovements() {
@@ -83,16 +104,18 @@ class Game {
 
   checkAllColision() {
     if (this.goldenSnitch.checkColision()) {
+      this.score++;
       this.goldenSnitch.randomPosition();
       this.goldenSnitch.randomFuturePosition();
       this.createBludger();
     }
 
-   for (let bludger of this.bludgers) {
-     if (bludger.checkColision()){
-       console.log('dead');
-     }
-   }
+    for (let bludger of this.bludgers) {
+      if (bludger.checkColision()) {
+        console.log('dead');
+        this.gameOver();
+      }
+    }
   }
 
   gameLoop() {

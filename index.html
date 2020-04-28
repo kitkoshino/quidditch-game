@@ -12,19 +12,33 @@
   </head>
   <body>
     <div class="principal">
-      <div class="game-intro" id = "game-intro">
+      <div class="game-intro" id="game-intro">
         <div class="images-players-intro">
-          <img src="/images/harry-potter-right.png" class="harry-image" alt="" id="harry-intro-image"/>
-          <img src="/images/draco-right.png" class="draco-image" alt="" id="draci-intro-image"/>         
+          <img
+            src="/images/harry-potter-right.png"
+            class="harry-image"
+            alt=""
+            id="harry-intro-image"
+          />
+          <img
+            src="/images/draco-right.png"
+            class="draco-image"
+            alt=""
+            id="draci-intro-image"
+          />
         </div>
         <button id="start-btn">Start Game</button>
       </div>
-      <div id="game-board" class="hide-div">
+      <div id="game-board" class="hide-div game-area">
         <canvas width="1500" height="900"></canvas>
+        <div class="buttons">
+         <!-- <button id="pause">Pause</button> -->
+        </div>
       </div>
     </div>
     <script src="/js/character.js"></script>
     <script src="/js/game.js"></script>
+    <script src="/js/bludger.js"></script>
     <script src="/js/background.js"></script>
     <script src="/js/golden-snitch.js"></script>
     <script src="/js/script.js"></script>

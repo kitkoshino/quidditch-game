@@ -5,6 +5,7 @@ class Game {
     this.character = new Character(this, selectedCharacter);
     this.background = new Background(this);
     this.goldenSnitch = new GoldenSnitch(this);
+    this.bludgers = [];
     this.isRunning = true;
     this.setKeyMovements();
   }
@@ -12,6 +13,7 @@ class Game {
   start() {
     console.log('jogo startado');
     this.draw();
+    this.createBludger();
     this.gameLoop();
   }
 
@@ -19,10 +21,27 @@ class Game {
     this.context.clearRect(0, 0, this.$canvas.width, this.$canvas.height);
   }
 
+  pause() {
+    if (this.isRunning) {
+      this.isRunning = false;
+    } else {
+      this.isRunning = true;
+      this.gameLoop();
+    }
+  }
+
   draw() {
     this.background.draw();
     this.goldenSnitch.draw();
     this.character.draw();
+    for (let bludger of this.bludgers) {
+      bludger.draw();
+    }
+  }
+
+  createBludger() {
+    const newbludger = new Bludger(this);
+    this.bludgers.push(newbludger);
   }
 
   setKeyMovements() {
@@ -63,10 +82,17 @@ class Game {
   }
 
   checkAllColision() {
-    if(this.goldenSnitch.checkColision()) {
+    if (this.goldenSnitch.checkColision()) {
       this.goldenSnitch.randomPosition();
       this.goldenSnitch.randomFuturePosition();
+      this.createBludger();
     }
+
+   for (let bludger of this.bludgers) {
+     if (bludger.checkColision()){
+       console.log('dead');
+     }
+   }
   }
 
   gameLoop() {
@@ -74,6 +100,10 @@ class Game {
     this.goldenSnitch.move();
     this.clear();
     this.draw();
+
+    for (let bludger of this.bludgers) {
+      bludger.move();
+    }
 
     if (this.isRunning) {
       setTimeout(() => {

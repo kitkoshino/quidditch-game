@@ -8,7 +8,7 @@ class Character {
     };
     this.col = 10; // posicao x
     this.row = 10; // posicao y
-    this.speed = 30;
+    this.speed = 40;
     this.direction = 'right';
     this.imageWidth = 90;
     this.imageHeight = 60;

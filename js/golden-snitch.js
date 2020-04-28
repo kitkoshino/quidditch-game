@@ -5,8 +5,6 @@ class GoldenSnitch {
     this.image.src = '/images/snitch.png';
     this.image1 = new Image();
     this.image1.src = '/images/snitch2.png';
-    this.image3 = new Image();
-    this.image3.src = '/images/snitch3.png';
     this.snitchWidth = 90;
     this.snitchHeight = 40;
     this.speed = 2;

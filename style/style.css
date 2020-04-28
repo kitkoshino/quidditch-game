@@ -12,7 +12,13 @@ body {
   background-position: 0% 50%;
   display: flex;
   justify-content: center;
+  flex-direction: row;
   align-items: center;
+}
+
+.game-area {
+  display: flex;
+  flex-direction: row;
 }
 
 .game-intro {
@@ -50,6 +56,10 @@ img {
   cursor: pointer;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
 
 .hide-div {
   display: none;

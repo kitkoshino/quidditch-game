@@ -12,6 +12,7 @@ window.onload = function () {
   const game = new Game($canvas, character);
   const pauseBtn = document.getElementById('pause');
   const restartBtn = document.getElementById('restart');
+  const restartGame = document.getElementById('restart-game');
 
   document.getElementById('start-btn').onclick = function () {
     // cria uma instancia do game
@@ -28,6 +29,11 @@ window.onload = function () {
     }
   };
   restartBtn.onclick = function () {
+    game.reset();
+  }
+
+
+  restartGame.onclick = function () {
     game.reset();
   }
 };

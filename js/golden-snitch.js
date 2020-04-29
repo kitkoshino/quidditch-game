@@ -77,16 +77,12 @@ class GoldenSnitch {
       this.game.character.row + this.game.character.imageHeight;
     const characterCol = this.game.character.col;
     const characterRow = this.game.character.row;
-    const endGoldenSnitchWidth = this.col + this.snitchWidth;
-    const endGoldenSnitchHeight = this.row + this.snitchHeight;
+    const middleGoldenSnitchWidth = this.col + this.snitchWidth / 2;
+    const middleGoldenSnitchHeight = this.row + this.snitchHeight / 2;
 
     return (
-      ((endCharacterWidth >= this.col &&
-        endCharacterWidth <= endGoldenSnitchWidth) ||
-        (characterCol >= this.col && characterCol <= endGoldenSnitchWidth)) &&
-      ((endCharacterHeight >= this.row &&
-        endCharacterHeight <= endGoldenSnitchHeight) ||
-        (characterRow >= this.row && characterRow <= endGoldenSnitchHeight))
+      middleGoldenSnitchWidth >= characterCol && middleGoldenSnitchWidth <= endCharacterWidth &&
+      middleGoldenSnitchHeight >= characterRow && middleGoldenSnitchHeight <= endCharacterHeight
     );
   }
 

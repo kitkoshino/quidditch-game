@@ -10,8 +10,14 @@ class Bludger {
   }
 
   draw() {
-    this.game.context.drawImage(this.image,this.col,this.row, this.radius, this.radius);
-   /*  this.game.context.beginPath();
+    this.game.context.drawImage(
+      this.image,
+      this.col,
+      this.row,
+      this.radius,
+      this.radius
+    );
+    /*  this.game.context.beginPath();
     this.game.context.arc(this.col, this.row, this.radius, 0, 2 * Math.PI);
     this.game.context.closePath();
 
@@ -28,7 +34,7 @@ class Bludger {
       this.speedCol = this.speedCol * -1;
     }
 
-    console.log('position bludger:',this.col,this.row);
+    console.log('position bludger:', this.col, this.row);
     this.row += this.speedRow;
     this.col += this.speedCol;
   }
@@ -42,18 +48,26 @@ class Bludger {
     );
   }
 
-  randomSpeed(){
+  randomSpeed() {
     const initialSpeed = Math.floor(Math.random() * 4) + 2;
     this.speedCol = initialSpeed;
     this.speedRow = initialSpeed;
   }
 
   checkColision() {
+    const middleCharacterWidth =
+      this.game.character.col + this.game.character.imageWidth / 2;
+    const middleCharacterHeight =
+      this.game.character.row + this.game.character.imageHeight / 2;
+
+    const endBludgerWidth = this.col + this.radius;
+    const endBludgerHeight = this.row + this.radius;
+
     return (
-      this.game.character.col >= this.col &&
-      this.game.character.col <= this.col + this.radius &&
-      this.game.character.row >= this.row &&
-      this.game.character.row <= this.row + this.radius
+      middleCharacterWidth >= this.col &&
+      middleCharacterWidth <= endBludgerWidth &&
+      middleCharacterHeight >= this.row &&
+      middleCharacterHeight <= endBludgerHeight
     );
   }
 }

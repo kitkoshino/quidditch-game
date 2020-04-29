@@ -131,8 +131,8 @@ class Game {
   }
 
   gameLoop() {
-    this.checkAllColision();
     this.goldenSnitch.move();
+    this.checkAllColision();
     console.log('Position character:',this.character.col,this.character.row);
     for (let bludger of this.bludgers) {
       bludger.move();

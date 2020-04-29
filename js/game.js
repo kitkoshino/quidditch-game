@@ -72,7 +72,7 @@ class Game {
     }
     document.getElementById('score').innerText = `Score: ${this.score}`;
     document.getElementById('best-score').innerText = `Best Score: ${this.bestScore}`;
-   // document.getElementById('game-over').classList.remove('hide-div');
+    document.getElementById('game-over').classList.remove('hide-div');
 
     console.log('game over');
   }

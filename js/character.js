@@ -10,6 +10,8 @@ class Character {
     this.col = 10; // posicao x
     this.row = 10; // posicao y
     this.speed = 40;
+    this.gravity = 0.5;
+    this.speedWithGravity = 0.5;
     this.direction = 'right';
     this.imageWidth = 90;
     this.imageHeight = 60;
@@ -44,7 +46,7 @@ class Character {
   }
 
   moveRight() {
-    if (this.col + this.speed <= this.game.$canvas.width - this.imageWidth){
+    if (this.col + this.speed <= this.game.$canvas.width - this.imageWidth) {
       this.col += this.speed;
       this.direction = 'right';
     } else {
@@ -62,6 +64,7 @@ class Character {
   }
 
   moveUp() {
+    this.speedWithGravity = 0.5;
     if (this.row - this.speed >= 0) {
       this.row -= this.speed;
     } else {
@@ -72,6 +75,18 @@ class Character {
   moveDown() {
     if (this.row + this.speed <= this.game.$canvas.height - this.imageHeight) {
       this.row += this.speed;
+    } else {
+      this.row = this.game.$canvas.height - this.imageHeight;
+    }
+  }
+
+  downWithGravity() {
+    this.speedWithGravity += (this.gravity / 1000 * 16);
+    if (
+      this.row + this.speedWithGravity <=
+      this.game.$canvas.height - this.imageHeight
+    ) {
+      this.row += this.speedWithGravity;
     } else {
       this.row = this.game.$canvas.height - this.imageHeight;
     }

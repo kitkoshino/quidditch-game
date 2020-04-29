@@ -131,6 +131,7 @@ class Game {
       bludger.move();
     }
 
+    this.character.downWithGravity();
     this.clear();
     this.draw();
 

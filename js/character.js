@@ -25,7 +25,7 @@ class Character {
   draw() {
     if(this.direction === 'right') {
       this.game.context.drawImage(this.image.right, this.col, this.row, this.imageWidth, this.imageHeight);
-    } else if (this.direction === 'left') {
+    } else if (this.direction  === 'left') {
       this.game.context.drawImage(this.image.left, this.col, this.row, this.imageWidth, this.imageHeight);
     }
   }

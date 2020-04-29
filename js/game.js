@@ -50,9 +50,14 @@ class Game {
     this.background.draw();
     this.goldenSnitch.draw();
     this.character.draw();
+    this.drawScore();
     for (let bludger of this.bludgers) {
       bludger.draw();
     }
+  }
+
+  drawScore() {
+    document.getElementById('run-score').innerText = `${this.score}`;
   }
 
   createBludger() {

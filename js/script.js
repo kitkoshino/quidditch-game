@@ -1,25 +1,22 @@
 const $canvas = document.querySelector('canvas');
+const harryBtn = document.getElementById('harry-intro-image');
+const dracoBtn = document.getElementById('draco-intro-image');
+const pauseBtn = document.getElementById('pause');
+const restartBtn = document.getElementById('restart');
+const restartGameBtn = document.getElementById('restart-game');
+const startBtn = document.getElementById('start-btn');
 
 window.onload = function () {
-  let character = 'harry-potter';
+  let selectedCharacter;
+  let game;
 
-  const harrySelected = document.getElementById('harry-intro-image');
-  const dracoSelected = document.getElementById('draci-intro-image');
-
-  // SE CLICAR NO HARRY character = hp;
-
-  // SE CLICAR NO DRACO character = dm;
-  const game = new Game($canvas, character);
-  const pauseBtn = document.getElementById('pause');
-  const restartBtn = document.getElementById('restart');
-  const restartGame = document.getElementById('restart-game');
-
-  document.getElementById('start-btn').onclick = function () {
-    // cria uma instancia do game
+  startBtn.onclick = function () {
+    game = new Game($canvas, selectedCharacter); // cria uma instancia do game
     game.start(); //inicia o jogo
     document.getElementById('game-intro').classList.add('hide-div'); //add class para esconder intro ao clicar em start
     document.getElementById('game-board').classList.remove('hide-div');
   };
+
   pauseBtn.onclick = function () {
     game.pause();
     if (game.isRunning) {
@@ -28,12 +25,29 @@ window.onload = function () {
       pauseBtn.innerText = 'Resume';
     }
   };
+
   restartBtn.onclick = function () {
     game.reset();
-  }
+  };
 
 
-  restartGame.onclick = function () {
+  restartGameBtn.onclick = function () {
     game.reset();
   }
+
+  harryBtn.addEventListener('click', function () {
+    selectedCharacter = 'harry-potter';
+    dracoBtn.src = '/images/draco-right.pb.png';
+    harryBtn.src = '/images/harry-potter-right.png';
+    startBtn.style.visibility = 'visible';
+
+  });
+
+  dracoBtn.addEventListener('click', function () {
+    selectedCharacter = 'draco';
+    harryBtn.src = '/images/harry-potter-right-pb.png';
+    dracoBtn.src ='/images/draco-right.png';
+    startBtn.style.visibility = 'visible';
+  });
+
 };

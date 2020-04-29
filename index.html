@@ -13,21 +13,22 @@
   <body>
     <div class="principal">
       <div class="game-intro" id="game-intro">
+        <h1>Select your player</h3>
         <div class="images-players-intro">
           <img
-            src="/images/harry-potter-right.png"
+            src="/images/harry-potter-right-pb.png"
             class="harry-image"
             alt=""
             id="harry-intro-image"
           />
           <img
-            src="/images/draco-right.png"
+            src="/images/draco-right.pb.png"
             class="draco-image"
             alt=""
             id="draco-intro-image"
           />
         </div>
-        <button id="start-btn">Start Game</button>
+      <button id="start-btn" style = "visibility:hidden;">Start Game</button>
       </div>
       <div class="game-over hide-div" id="game-over">
         <img
@@ -48,7 +49,9 @@
           <h2>Instructions</h2>
           <p>- Use arrow Keys to move your character</p>
           <p>- Avoid bludger balls!</p>
-          <p>- Catch the golden snitch and win points to </p>
+          <p>- Catch the golden snitch and win points to your house!</p>
+          <p>- If you refresh the page, your best score will be erased </p>
+
         </div>
         <div class="buttons">
           <canvas width="1000" height="700"></canvas>
@@ -56,6 +59,10 @@
         <div class ="right-items">
         <div class="score-board" id="scoreboard">
           <h3>Score</h3>
+          <br />
+          <div class="score-number">
+            <h3 id ="run-score"></h3>
+          </div>
         </div>
         <div class="btns">
           <button id="pause">Pause</button>

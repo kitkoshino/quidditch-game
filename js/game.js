@@ -81,32 +81,32 @@ class Game {
     window.addEventListener('keydown', (event) => {
       switch (event.keyCode) {
         case 39:
+          event.preventDefault();
           if (
             this.character.col <
             this.$canvas.width - this.character.imageWidth
           ) {
-            event.preventDefault();
             this.character.moveRight();
           }
           break;
         case 37:
+          event.preventDefault();
           if (this.character.col - this.character.speed > 0) {
-            event.preventDefault();
             this.character.moveLeft();
           }
           break;
         case 38:
+          event.preventDefault();
           if (this.character.row - this.character.speed > 0) {
-            event.preventDefault();
             this.character.moveUp();
           }
           break;
         case 40:
+          event.preventDefault();
           if (
             this.character.row <
             this.$canvas.height - this.character.imageHeight
           ) {
-            event.preventDefault();
             this.character.moveDown();
           }
           break;
@@ -133,7 +133,6 @@ class Game {
   gameLoop() {
     this.goldenSnitch.move();
     this.checkAllColision();
-    console.log('Position character:',this.character.col,this.character.row);
     for (let bludger of this.bludgers) {
       bludger.move();
     }

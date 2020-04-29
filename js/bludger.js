@@ -6,6 +6,7 @@ class Bludger {
     this.color = 'brown';
     this.image = new Image();
     this.image.src = '/images/bludger.png';
+    this.direction = Math.floor(Math.random() * 3);
     this.randomPosition(); //cria posicao col e row a partir do metodo randomPosition
   }
 
@@ -26,26 +27,44 @@ class Bludger {
   }
 
   move() {
-    if (this.row >= this.game.$canvas.height - this.radius || this.row <= 10) {
+    if (this.row >= this.game.$canvas.height - this.radius || this.row <= 0) {
       this.speedRow = this.speedRow * -1;
     }
 
-    if (this.col >= this.game.$canvas.width - this.radius || this.col <= 10) {
+    if (this.col >= this.game.$canvas.width - this.radius || this.col <= 0) {
       this.speedCol = this.speedCol * -1;
     }
 
-    console.log('position bludger:', this.col, this.row);
     this.row += this.speedRow;
     this.col += this.speedCol;
   }
 
   randomPosition() {
-    this.col = Math.floor(
-      Math.random() * (this.game.$canvas.width - this.radius)
-    );
-    this.row = Math.floor(
-      Math.random() * (this.game.$canvas.height - this.radius)
-    );
+    if (this.direction === 0) {
+      //0 = top
+      this.row = 10;
+      this.col = Math.floor(
+        Math.random() * (this.game.$canvas.width - this.radius)
+      );
+    } else if (this.direction === 1) {
+      // 1 = right
+      this.col = this.game.$canvas.width - this.game.character.imageWidth;
+      this.row = Math.floor(
+        Math.random() * (this.game.$canvas.height - this.radius)
+      );
+    } else if (this.direction === 2) {
+      // 2 = bottom
+      this.row = this.game.$canvas.height - this.game.character.imageHeight;
+      this.col = Math.floor(
+        Math.random() * (this.game.$canvas.width - this.radius));
+    } else if (this.direction === 3) {
+      // 3 = left
+      this.col = 10;
+      this.row = Math.floor(
+        Math.random() * (this.game.$canvas.height - this.radius)
+      );
+    }
+    console.log('nasceu:' ,this.col, this.row);
   }
 
   randomSpeed() {

@@ -5,6 +5,9 @@ const pauseBtn = document.getElementById('pause');
 const restartBtn = document.getElementById('restart');
 const restartGameBtn = document.getElementById('restart-game');
 const startBtn = document.getElementById('start-btn');
+const soundBtn = document.getElementById('sound-btn');
+
+const selectSound = new Audio ('/sounds/select.aiff');
 
 window.onload = function () {
   let selectedCharacter;
@@ -24,6 +27,12 @@ window.onload = function () {
     } else {
       pauseBtn.innerText = 'Resume';
     }
+  };
+
+  soundBtn.onclick = function () {
+    game.isSoundOn = !game.isSoundOn;
+    console.log('clique',game.isSoundOn);
+    
   };
 
   restartBtn.onclick = function () {
@@ -49,5 +58,7 @@ window.onload = function () {
     dracoBtn.src ='/images/draco-right.png';
     startBtn.style.visibility = 'visible';
   });
+
+  
 
 };

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style/style.css" />
+    <link rel="shortcut icon" href="#">
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400;700&display=swap"
       rel="stylesheet"
@@ -47,11 +48,25 @@
       <div id="game-board" class="hide-div game-area">
         <div class="instructions">
           <h2>Instructions</h2>
-          <p>- Use arrow Keys to move your character</p>
-          <p>- Avoid bludger balls!</p>
-          <p>- Catch the golden snitch and win points to your house!</p>
-          <p>- If you refresh the page, your best score will be erased </p>
-
+          
+          <div class ="align-keyboard">
+            <img src="/images/keyboard.png" class="keyboard-img"/>
+            <p>Use arrow Keys to move your character</p>
+         </div>
+          
+          <div class ="align-keyboard">
+            <img src="/images/bludger.png" class="bludger-img"/>
+            <p>Avoid bludger balls!</p>
+         </div>
+         
+          <div class ="align-keyboard">
+            <img src="/images/snitch.png" class="snitch-img"/>
+            <p>Catch the golden snitch and win points to your house!</p>
+         </div>
+         <div class ="align-keyboard">
+          <img src="/images/reload.png" class="reload-img"/>
+          <p>If you refresh the page, your best score will be erased</p>
+       </div>
         </div>
         <div class="buttons">
           <canvas width="1000" height="700"></canvas>
@@ -67,6 +82,7 @@
         <div class="btns">
           <button id="pause">Pause</button>
           <button id="restart-game">Restart</button>
+          <button id="sound-btn">Sound</button>
         </div>
       </div>
       </div>

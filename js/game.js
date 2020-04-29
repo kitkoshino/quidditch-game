@@ -1,3 +1,7 @@
+const goldenSnitchSound = new Audio('/sounds/getSound.flac');
+const moveSound = new Audio('/sounds/move.wav');
+const lostSound = new Audio ('/sounds/lose.wav');
+
 class Game {
   constructor($canvas, selectedCharacter) {
     this.$canvas = $canvas;
@@ -8,6 +12,7 @@ class Game {
     this.goldenSnitch = new GoldenSnitch(this);
     this.bludgers = [];
     this.isRunning = true;
+    this.isSoundOn = true;
     this.score = 0;
     this.bestScore = 0;
     this.setKeyMovements();
@@ -102,6 +107,9 @@ class Game {
 
   checkAllColision() {
     if (this.goldenSnitch.checkColision()) {
+      if(this.isSoundOn) {
+        goldenSnitchSound.play();
+      }
       this.score++;
       this.goldenSnitch.randomPosition();
       this.goldenSnitch.randomFuturePosition();

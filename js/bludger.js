@@ -48,13 +48,13 @@ class Bludger {
       );
     } else if (this.direction === 1) {
       // 1 = right
-      this.col = this.game.$canvas.width - this.game.character.imageWidth;
+      this.col = this.game.$canvas.width -this.radius;
       this.row = Math.floor(
         Math.random() * (this.game.$canvas.height - this.radius)
       );
     } else if (this.direction === 2) {
       // 2 = bottom
-      this.row = this.game.$canvas.height - this.game.character.imageHeight;
+      this.row = this.game.$canvas.height - this.radius;
       this.col = Math.floor(
         Math.random() * (this.game.$canvas.width - this.radius));
     } else if (this.direction === 3) {

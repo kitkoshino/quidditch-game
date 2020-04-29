@@ -25,6 +25,7 @@ p {
 .game-area {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100vw;
   margin: 0;
 }
@@ -75,10 +76,7 @@ img {
 }
 
 .score-board {
-  width: 300px;
   height: 200px;
-  /*margin-right: -300px;*/
-  margin-left: 20px;
   display: flex;
   justify-content: baseline;
   flex-direction: column;
@@ -144,6 +142,8 @@ img {
 .right-items {
   display: flex;
   flex-direction: column;
+  width: 250px;
+  height: 700px;
 }
 
 .score {
@@ -176,11 +176,10 @@ img {
 
 .instructions {
   background-color:  rgba(0, 0, 0, 0.8);
-  width: 300px;
-  margin-right: 20px;
+  width: 250px;
+  height: 700px;
   color: white;
-  padding: 10px;
-  margin-bottom: 30px;
+  padding: 0 10px 0 10px;
 }
 
 .instructions p {

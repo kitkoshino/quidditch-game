@@ -3,7 +3,8 @@ class Character {
     this.game = game;
     this.image = {
       left: this.createCharacterImage(`/images/${selectedCharacter}-left.png`), //chama funcao createCharacterImagem e envia esse url como parametro
-      right: this.createCharacterImage(`/images/${selectedCharacter}-right.png`
+      right: this.createCharacterImage(
+        `/images/${selectedCharacter}-right.png`
       ), // createCharacterImagem e envia esse url como parametro
     };
     this.col = 10; // posicao x
@@ -23,29 +24,56 @@ class Character {
   }
 
   draw() {
-    if(this.direction === 'right') {
-      this.game.context.drawImage(this.image.right, this.col, this.row, this.imageWidth, this.imageHeight);
-    } else if (this.direction  === 'left') {
-      this.game.context.drawImage(this.image.left, this.col, this.row, this.imageWidth, this.imageHeight);
+    if (this.direction === 'right') {
+      this.game.context.drawImage(
+        this.image.right,
+        this.col,
+        this.row,
+        this.imageWidth,
+        this.imageHeight
+      );
+    } else if (this.direction === 'left') {
+      this.game.context.drawImage(
+        this.image.left,
+        this.col,
+        this.row,
+        this.imageWidth,
+        this.imageHeight
+      );
     }
   }
 
   moveRight() {
-    this.col += this.speed;
-    this.direction = 'right';
+    if (this.col + this.speed <= this.game.$canvas.width - this.imageWidth){
+      this.col += this.speed;
+      this.direction = 'right';
+    } else {
+      this.col = this.game.$canvas.width - this.imageWidth;
     }
+  }
 
   moveLeft() {
-    this.col -= this.speed;
-    this.direction = 'left';
+    if (this.col - this.speed >= 0) {
+      this.col -= this.speed;
+      this.direction = 'left';
+    } else {
+      this.col = 0;
+    }
   }
 
   moveUp() {
-    this.row -= this.speed;
+    if (this.row - this.speed >= 0) {
+      this.row -= this.speed;
+    } else {
+      this.row = 0;
+    }
   }
 
   moveDown() {
-    this.row += this.speed;
+    if (this.row + this.speed <= this.game.$canvas.height - this.imageHeight) {
+      this.row += this.speed;
+    } else {
+      this.row = this.game.$canvas.height - this.imageHeight;
+    }
   }
-
 }

@@ -82,33 +82,19 @@ class Game {
       switch (event.keyCode) {
         case 39:
           event.preventDefault();
-          if (
-            this.character.col <
-            this.$canvas.width - this.character.imageWidth
-          ) {
-            this.character.moveRight();
-          }
+          this.character.moveRight();
           break;
         case 37:
           event.preventDefault();
-          if (this.character.col - this.character.speed > 0) {
-            this.character.moveLeft();
-          }
+          this.character.moveLeft();
           break;
         case 38:
           event.preventDefault();
-          if (this.character.row - this.character.speed > 0) {
-            this.character.moveUp();
-          }
+          this.character.moveUp();
           break;
         case 40:
           event.preventDefault();
-          if (
-            this.character.row <
-            this.$canvas.height - this.character.imageHeight
-          ) {
-            this.character.moveDown();
-          }
+          this.character.moveDown();
           break;
       }
     });

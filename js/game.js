@@ -72,7 +72,7 @@ class Game {
     }
     document.getElementById('score').innerText = `Score: ${this.score}`;
     document.getElementById('best-score').innerText = `Best Score: ${this.bestScore}`;
-    document.getElementById('game-over').classList.remove('hide-div');
+   // document.getElementById('game-over').classList.remove('hide-div');
 
     console.log('game over');
   }
@@ -90,13 +90,13 @@ class Game {
           }
           break;
         case 37:
-          if (this.character.col > 0) {
+          if (this.character.col - this.character.speed > 0) {
             event.preventDefault();
             this.character.moveLeft();
           }
           break;
         case 38:
-          if (this.character.row > 0) {
+          if (this.character.row - this.character.speed > 0) {
             event.preventDefault();
             this.character.moveUp();
           }
@@ -133,7 +133,7 @@ class Game {
   gameLoop() {
     this.checkAllColision();
     this.goldenSnitch.move();
-
+    console.log('Position character:',this.character.col,this.character.row);
     for (let bludger of this.bludgers) {
       bludger.move();
     }

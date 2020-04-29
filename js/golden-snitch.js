@@ -16,15 +16,14 @@ class GoldenSnitch {
 
   draw() {
     if (this.contador % 10 === 0) {
-      if(this.direction === 'up') {
-        this.direction = 'down'
+      if (this.direction === 'up') {
+        this.direction = 'down';
       } else {
         this.direction = 'up';
       }
-     
     }
 
-    if(this.direction === 'up') {
+    if (this.direction === 'up') {
       this.game.context.drawImage(
         this.image,
         this.col,
@@ -72,11 +71,22 @@ class GoldenSnitch {
   }
 
   checkColision() {
+    const endCharacterWidth =
+      this.game.character.col + this.game.character.imageWidth;
+    const endCharacterHeight =
+      this.game.character.row + this.game.character.imageHeight;
+    const characterCol = this.game.character.col;
+    const characterRow = this.game.character.row;
+    const endGoldenSnitchWidth = this.col + this.snitchWidth;
+    const endGoldenSnitchHeight = this.row + this.snitchHeight;
+
     return (
-      this.game.character.col >= this.col &&
-      this.game.character.col <= this.col + this.snitchWidth &&
-      this.game.character.row >= this.row &&
-      this.game.character.row <= this.row + this.snitchHeight
+      ((endCharacterWidth >= this.col &&
+        endCharacterWidth <= endGoldenSnitchWidth) ||
+        (characterCol >= this.col && characterCol <= endGoldenSnitchWidth)) &&
+      ((endCharacterHeight >= this.row &&
+        endCharacterHeight <= endGoldenSnitchHeight) ||
+        (characterRow >= this.row && characterRow <= endGoldenSnitchHeight))
     );
   }
 

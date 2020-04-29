@@ -28,6 +28,7 @@ class Bludger {
       this.speedCol = this.speedCol * -1;
     }
 
+    console.log('position bludger:',this.col,this.row);
     this.row += this.speedRow;
     this.col += this.speedCol;
   }

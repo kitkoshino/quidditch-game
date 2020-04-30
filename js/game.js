@@ -23,11 +23,14 @@ class Game {
     this.isRunning = true;
     this.createBludger();
     this.gameLoop();
+    document.getElementById('best-score-gameRunning').innerText = `Best Score: ${this.bestScore}`;
   }
 
   reset() {
     document.getElementById('game-over').classList.add('hide-div');
     this.isRunning = false;
+    this.backgroundMusic.volume = 1.0;
+    this.backgroundMusic.currentTime = 0;
     setTimeout(() => {
       this.character = new Character(this, this.selectedCharacter);
       this.background = new Background(this);
@@ -80,6 +83,7 @@ class Game {
 
   gameOver() {
     this.isRunning = false;
+    this.backgroundMusic.volume = 0;
     if (this.score > this.bestScore) {
       this.bestScore = this.score;
     }
@@ -88,8 +92,7 @@ class Game {
       'best-score'
     ).innerText = `Best Score: ${this.bestScore}`;
     document.getElementById('game-over').classList.remove('hide-div');
-
-    console.log('game over');
+    
   }
 
   setKeyMovements() {
@@ -128,7 +131,9 @@ class Game {
 
     for (let bludger of this.bludgers) {
       if (bludger.checkColision()) {
-        console.log('dead');
+        if (this.isSoundOn) {
+          this.lostSound.play();
+        }
         this.gameOver();
       }
     }

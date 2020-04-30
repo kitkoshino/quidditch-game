@@ -2,8 +2,8 @@ const $canvas = document.querySelector('canvas');
 const harryBtn = document.getElementById('harry-intro-image');
 const dracoBtn = document.getElementById('draco-intro-image');
 const pauseBtn = document.getElementById('pause');
-const restartBtn = document.getElementById('restart');
-const restartGameBtn = document.getElementById('restart-game');
+const restartBtn = document.getElementById('restart'); // botão do game-over
+const restartGameBtn = document.getElementById('restart-game'); // botão do jogo
 const startBtn = document.getElementById('start-btn');
 const soundBtn = document.getElementById('sound-btn');
 
@@ -66,4 +66,6 @@ window.onload = function () {
     dracoBtn.src = '/images/draco-right.png';
     startBtn.style.visibility = 'visible';
   });
+
+  
 };

@@ -49,8 +49,10 @@ class Game {
   pause() {
     if (this.isRunning) {
       this.isRunning = false;
+      this.backgroundMusic.pause();
     } else {
       this.isRunning = true;
+      this.playBlackgroundMusic();
       this.gameLoop();
     }
   }

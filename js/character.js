@@ -15,7 +15,6 @@ class Character {
     this.direction = 'right';
     this.imageWidth = 90;
     this.imageHeight = 60;
-    console.log(selectedCharacter);
   }
 
   createCharacterImage(imageUrl) {
@@ -82,7 +81,7 @@ class Character {
   }
 
   downWithGravity() {
-    this.speedWithGravity += (this.gravity / 1000 * 16);
+    this.speedWithGravity += (this.gravity / 1000) * 16;
     if (
       this.row + this.speedWithGravity <=
       this.game.$canvas.height - this.imageHeight

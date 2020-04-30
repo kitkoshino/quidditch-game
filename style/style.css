@@ -24,7 +24,7 @@ img {
 body button {
   width: 500px;
   height: 100px;
-  background-color: brown;
+ /* background-color: brown;*/
   color: white;
   border-style: none;
   /*margin-left: 100px;*/
@@ -35,9 +35,9 @@ body button {
   border-radius: 12px;
 }
 
-body button:hover {
+/*body button:hover {
   background-color: #e3a000;
-}
+}*/
 
 .principal {
   width: 100vw;
@@ -145,7 +145,7 @@ body button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: brown;
+  /*background-color: brown;*/
   border-radius: 12px;
 }
 
@@ -250,3 +250,26 @@ body button:hover {
   margin-left: 0;
 }
 
+.harry-main-color {
+  background-color: brown;
+}
+
+.harry-btn:hover {
+  background-color: #e3a000	;
+}
+
+.harry-second-color {
+  background-color: #e3a000;
+}
+
+.draco-main-color {
+  background-color: #033807;
+}
+
+.draco-btn:hover {
+  background-color: #5d5d5d	;
+}
+
+.draco-second-color {
+  background-color: #5d5d5d;
+}

@@ -24,8 +24,10 @@ window.onload = function () {
     game.pause();
     if (game.isRunning) {
       pauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+      pauseBtn.classList.remove('disabled');
     } else {
       pauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+      pause.classList.add('disabled');
     }
   };
 
@@ -33,8 +35,10 @@ window.onload = function () {
     game.isSoundOn = !game.isSoundOn;
     if(game.isSoundOn) {
       soundBtn.innerHTML = '<i class ="fa fa-volume-up"></i>';
+      soundBtn.classList.remove('disabled');
     } else {
       soundBtn.innerHTML = '<i class ="fa fa-volume-off"></i>';
+      soundBtn.classList.add('disabled');
     }
     game.playBlackgroundMusic();
   };
@@ -45,6 +49,8 @@ window.onload = function () {
 
   restartGameBtn.onclick = function () {
     game.reset();
+    pauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+    pause.classList.remove('disabled');
   };
 
   harryBtn.addEventListener('click', function () {

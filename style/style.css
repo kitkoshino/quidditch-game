@@ -67,9 +67,14 @@ body button {
   font-family: 'Roboto Slab', serif;
   cursor: pointer;
   outline: none;
+  border-radius: 12px;
 }
 
 body button:hover {
+  background-color: #e3a000;
+}
+
+.disabled {
   background-color: #e3a000;
 }
 
@@ -196,9 +201,7 @@ img {
   margin-left: 10px;
 }
 
-.keyboard-img {
-  width: 100px;
-}
+
 
 .align-keyboard {
   display: flex;
@@ -208,15 +211,23 @@ img {
   margin-bottom: 10px;
 }
 
+.keyboard-img {
+  width: 100px;
+  cursor: auto;
+}
+
 .bludger-img {
   width: 100px;
+  cursor: auto;
 }
 
 .snitch-img {
   width: 100px;
   height: 50px;
+  cursor: auto;
 }
 
 .reload-img {
   width: 100px;
+  cursor: auto;
 }

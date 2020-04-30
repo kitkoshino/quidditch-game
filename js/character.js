@@ -75,6 +75,7 @@ class Character {
   moveDown() {
     if (this.row + this.speed <= this.game.$canvas.height - this.imageHeight) {
       this.row += this.speed;
+      this.speedWithGravity + 40;
     } else {
       this.row = this.game.$canvas.height - this.imageHeight;
     }

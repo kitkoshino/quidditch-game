@@ -7,7 +7,7 @@ const restartGameBtn = document.getElementById('restart-game');
 const startBtn = document.getElementById('start-btn');
 const soundBtn = document.getElementById('sound-btn');
 
-const selectSound = new Audio ('/sounds/select.aiff');
+const selectSound = new Audio('/sounds/select.aiff');
 
 window.onload = function () {
   let selectedCharacter;
@@ -23,42 +23,41 @@ window.onload = function () {
   pauseBtn.onclick = function () {
     game.pause();
     if (game.isRunning) {
-      pauseBtn.innerText = 'Pause';
+      pauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
     } else {
-      pauseBtn.innerText = 'Resume';
+      pauseBtn.innerHTML = '<i class="fa fa-play"></i>';
     }
   };
 
   soundBtn.onclick = function () {
     game.isSoundOn = !game.isSoundOn;
-    console.log('clique',game.isSoundOn);
-    
+    if(game.isSoundOn) {
+      soundBtn.innerHTML = '<i class ="fa fa-volume-up"></i>';
+    } else {
+      soundBtn.innerHTML = '<i class ="fa fa-volume-off"></i>';
+    }
+    game.playBlackgroundMusic();
   };
 
   restartBtn.onclick = function () {
     game.reset();
   };
 
-
   restartGameBtn.onclick = function () {
     game.reset();
-  }
+  };
 
   harryBtn.addEventListener('click', function () {
     selectedCharacter = 'harry-potter';
     dracoBtn.src = '/images/draco-right.pb.png';
     harryBtn.src = '/images/harry-potter-right.png';
     startBtn.style.visibility = 'visible';
-
   });
 
   dracoBtn.addEventListener('click', function () {
     selectedCharacter = 'draco';
     harryBtn.src = '/images/harry-potter-right-pb.png';
-    dracoBtn.src ='/images/draco-right.png';
+    dracoBtn.src = '/images/draco-right.png';
     startBtn.style.visibility = 'visible';
   });
-
-  
-
 };

@@ -1,7 +1,3 @@
-const goldenSnitchSound = new Audio('/sounds/getSound.flac');
-const moveSound = new Audio('/sounds/move.wav');
-const lostSound = new Audio ('/sounds/lose.wav');
-
 class Game {
   constructor($canvas, selectedCharacter) {
     this.$canvas = $canvas;
@@ -16,6 +12,10 @@ class Game {
     this.score = 0;
     this.bestScore = 0;
     this.setKeyMovements();
+    this.goldenSnitchSound = new Audio('/sounds/getSound.flac');
+    this.moveSound = new Audio('/sounds/move.wav');
+    this.lostSound = new Audio('/sounds/lose.wav');
+    this.backgroundMusic = new Audio('/sounds/backgroundMusic.mp3');
   }
 
   start() {
@@ -35,7 +35,7 @@ class Game {
       this.bludgers = [];
       this.score = 0;
       this.start();
-    }, 1000 / 30)
+    }, 1000 / 30);
   }
 
   clear() {
@@ -48,6 +48,14 @@ class Game {
     } else {
       this.isRunning = true;
       this.gameLoop();
+    }
+  }
+
+  playBlackgroundMusic() {
+    if(this.isSoundOn) {
+      this.backgroundMusic.play();
+    } else {
+      this.backgroundMusic.pause();
     }
   }
 
@@ -76,7 +84,9 @@ class Game {
       this.bestScore = this.score;
     }
     document.getElementById('score').innerText = `Score: ${this.score}`;
-    document.getElementById('best-score').innerText = `Best Score: ${this.bestScore}`;
+    document.getElementById(
+      'best-score'
+    ).innerText = `Best Score: ${this.bestScore}`;
     document.getElementById('game-over').classList.remove('hide-div');
 
     console.log('game over');
@@ -107,8 +117,8 @@ class Game {
 
   checkAllColision() {
     if (this.goldenSnitch.checkColision()) {
-      if(this.isSoundOn) {
-        goldenSnitchSound.play();
+      if (this.isSoundOn) {
+        this.goldenSnitchSound.play();
       }
       this.score++;
       this.goldenSnitch.randomPosition();
@@ -134,6 +144,8 @@ class Game {
     this.character.downWithGravity();
     this.clear();
     this.draw();
+
+    this.playBlackgroundMusic();
 
     if (this.isRunning) {
       setTimeout(() => {
